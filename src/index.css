@@ -1,0 +1,73 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("../public/assets/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+div.signin,
+div.reset-password {
+  background-color: rgba(255,255,255,0.2);
+  width: 50%;
+  height: 400px;
+  margin: 100px auto;
+  box-shadow: 0 0 10px black;
+  border-radius: 20px;
+}
+
+div.reset-password {
+  height: 300px;
+}
+
+div.signin h1,
+div.reset-password h1 {
+  color: black;
+  text-shadow: 0 0 2px white;
+  text-align: center;
+  font-weight: bolder;
+  padding-top: 20px;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+div.signin form input, 
+div.reset-password form input {
+  display: block;
+  margin: 20px auto;
+}
+
+div.signin p, 
+div.reset-password p {
+  text-align: center;
+  font-weight: bolder;
+  color: white;
+}
+
+div.signin p a, 
+div.reset-password p a {
+  color: white;
+  text-decoration: none;
+} 
+
+div.signin input[type="email"], 
+div.signin input[type="password"], 
+div.reset-password input[type="email"],
+div.reset-password input[type="password"]{
+  width: 50%;
+}
+
+div.signin input[type="submit"], 
+div.reset-password input[type="submit"] {
+  width: 100px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+div.reset-password input[type="submit"] {
+  width: 150px;
+}
