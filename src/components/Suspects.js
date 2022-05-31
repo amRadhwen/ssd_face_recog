@@ -1,12 +1,12 @@
 import React from 'react'
 import Header from './Header'
 
-export default function Employees() {
+export default function Suspects() {
   return (
-    <div className='employees'>
+    <div className='suspects'>
         <Header/>
         <div className='col-md-10 mx-auto mt-3'>
-          <p className='text-center h1 text-info text-uppercase'>List of employees</p>
+          <p className='text-center h1 text-info text-uppercase'>List of suspects</p>
         </div>
         <div className='col-md-10 mx-auto mt-3'>
           <table className='table'>
