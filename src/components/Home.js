@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
+import Header from './Header'
 
-const Home = () => {
-  return(
-      <div id="Home">
-        
-      </div>
+export default function Home() {
+  return (
+    <div className='home'>
+      <Header/>
+    </div>
   )
 }
