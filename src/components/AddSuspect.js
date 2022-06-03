@@ -1,7 +1,10 @@
 import React from 'react'
 import Header from './Header'
+import {db} from "../config/firebase-config";
+import {ref, set} from "firebase/database";
 
 export default function AddSuspect() {
+  
   return (
     <div className='add-suspect'>
         <Header/>

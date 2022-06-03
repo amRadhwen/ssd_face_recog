@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './Header'
+import { Link } from 'react-router-dom'
 
 export default function Users() {
   return (
@@ -7,6 +8,9 @@ export default function Users() {
         <Header/>
         <div className='col-md-10 mx-auto mt-3'>
           <p className='text-center h1 text-info text-uppercase'>List of users</p>
+        </div>
+        <div className='col-md-10 mx-auto mt-3' style={{textAlign: "center"}}>
+          <Link className='btn btn-primary' to="add-user">New User</Link>
         </div>
         <div className='col-md-10 mx-auto mt-3'>
           <table className='table'>
