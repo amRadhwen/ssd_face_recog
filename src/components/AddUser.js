@@ -5,6 +5,7 @@ import {storage} from "../config/firebase-config";
 //import {ref as reference, getDownloadURL, uploadBytesResumable} from "firebase/storage";
 import {ref, set} from "firebase/database";
 import {ToastContainer, toast} from "react-toastify";
+import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, } from "firebase/auth";
 
 export default function AddUser() {
   const [firstName, setFirstName] = useState("");
@@ -12,10 +13,12 @@ export default function AddUser() {
   const [cin, setCin] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e)=> {
     e.preventDefault();
     const db = getDatabase();
+    const auth = getAuth();
     const userId = new Date().getTime().toString();
     try {
       set(ref(db, "users/"+userId), {
@@ -25,6 +28,9 @@ export default function AddUser() {
         lastName: lastName,
         email: email,
         phone: phone
+      })
+      createUserWithEmailAndPassword(auth, email, password).then(res=>{
+        console.log("new user created !")
       })
       toast.success("New User added !")
       setTimeout(()=>{
@@ -59,6 +65,9 @@ export default function AddUser() {
               <br/>
               <label className='text-light' for="email">Email</label>
               <input onChange={(e)=>{setEmail(e.target.value)}} type={"email"} placeholder="Email" className='form-control'/>
+              <br/>
+              <label className='text-light' for="password">Password</label>
+              <input onChange={(e)=>{setPassword(e.target.value)}} type={"password"} placeholder="Password" className='form-control'/>
               <br/>
               <input type={"submit"} value="ADD" className='btn btn-primary mb-5'/>
           </form>

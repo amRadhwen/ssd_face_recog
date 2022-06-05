@@ -20,7 +20,7 @@ import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 
 //auth middlewares
-import { isAuth, needAuth} from "./protection/authProtection";
+import { isAuth, needAuth, needAdmin} from "./protection/authProtection";
 import UserDetails from "./components/UserDetails";
 
 function App() {
@@ -28,18 +28,18 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" component={isAuth(Signin)} />
-        <Route path="/home" component={needAuth(Home)} />
+        {/*<Route path="/home" component={needAuth(Home)} />*/}
         <Route path="/reset-password" component={isAuth(Resetpassword)} />
-        <Route path="/add-employee" component={needAuth(AddEmployee)} />
-        <Route path="/add-suspect" component={needAuth(AddSuspect)} />
-        <Route path="/employees/:id" component={needAuth(EmployeeDetails)} />
-        <Route path="/suspects/:id" component={needAuth(SuspectDetails)} />
-        <Route path="/suspects" component={needAuth(Suspects)} />
-        <Route path="/employees" component={needAuth(Employees)} />
+        <Route path="/add-employee" component={needAdmin(AddEmployee)} />
+        <Route path="/add-suspect" component={needAdmin(AddSuspect)} />
+        <Route path="/employees/:id" component={needAdmin(EmployeeDetails)} />
+        <Route path="/suspects/:id" component={needAdmin(SuspectDetails)} />
+        <Route path="/suspects" component={needAdmin(Suspects)} />
+        <Route path="/employees" component={needAdmin(Employees)} />
         <Route path={"/notifications"} component={needAuth(Notifications)}/>
-        <Route path={"/add-user"} component={needAuth(AddUser)} />
-        <Route path={"/users/:id"} component={needAuth(UserDetails)}/>
-        <Route path={"/users"} component={needAuth(Users)} />
+        <Route path={"/add-user"} component={needAdmin(AddUser)} />
+        <Route path={"/users/:id"} component={needAdmin(UserDetails)}/>
+        <Route path={"/users"} component={needAdmin(Users)} />
         <Route path="*" component={NotFound} />
       </Switch>
     </div>

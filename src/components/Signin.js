@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { app } from "../config/firebase-config";
+//import { app } from "../config/firebase-config";
 import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, } from "firebase/auth";
 import {ToastContainer, toast} from "react-toastify";
 
@@ -14,7 +14,7 @@ const Signin = ({history}) => {
         const authentification = getAuth();
         try {
             const user = await signInWithEmailAndPassword(authentification, email, password);
-            if(user.user.email === "admin@ssdrfc.com") {
+            if(user.user.email === "admin@ssdfrc.com") {
                 localStorage.setItem("admin", true);
             }
             localStorage.setItem("token", user._tokenResponse.refreshToken);
