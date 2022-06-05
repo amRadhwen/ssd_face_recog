@@ -21,6 +21,7 @@ import NotFound from "./components/NotFound";
 
 //auth middlewares
 import { isAuth, needAuth} from "./protection/authProtection";
+import UserDetails from "./components/UserDetails";
 
 function App() {
   return (
@@ -29,14 +30,15 @@ function App() {
         <Route exact path="/" component={isAuth(Signin)} />
         <Route path="/home" component={needAuth(Home)} />
         <Route path="/reset-password" component={isAuth(Resetpassword)} />
-        <Route path="/suspects" component={needAuth(Suspects)} />
         <Route path="/add-employee" component={needAuth(AddEmployee)} />
         <Route path="/add-suspect" component={needAuth(AddSuspect)} />
         <Route path="/employees/:id" component={needAuth(EmployeeDetails)} />
         <Route path="/suspects/:id" component={needAuth(SuspectDetails)} />
+        <Route path="/suspects" component={needAuth(Suspects)} />
         <Route path="/employees" component={needAuth(Employees)} />
         <Route path={"/notifications"} component={needAuth(Notifications)}/>
         <Route path={"/add-user"} component={needAuth(AddUser)} />
+        <Route path={"/users/:id"} component={needAuth(UserDetails)}/>
         <Route path={"/users"} component={needAuth(Users)} />
         <Route path="*" component={NotFound} />
       </Switch>

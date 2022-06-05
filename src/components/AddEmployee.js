@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import Header from './Header'
 import {storage} from "../config/firebase-config";
-import {ref, getDownloadURL, uploadBytesResumable} from "firebase/storage";
+//import {ref, getDownloadURL, uploadBytesResumable} from "firebase/storage";
 import {ToastContainer, toast} from "react-toastify";
-import SuspectDataService from "../config/Suspect.service"
+import { getDatabase } from 'firebase/database';
+import {ref as stref , getDownloadURL, uploadBytesResumable} from "firebase/storage";
+import {ref as dbref , set} from "firebase/database";
 
 export default function AddEmployee() {
   const [photo, setPhoto] = useState(null);
@@ -19,7 +21,7 @@ export default function AddEmployee() {
     const file = e.target.files[0];
 
     if(!file) return;
-    const storageRef = ref(storage, `employees/${file.name}`);
+    const storageRef = stref(storage, `employees/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on("state_changed", (snapshot)=> {
@@ -38,22 +40,29 @@ export default function AddEmployee() {
     }
     )
   }
+  console.log(photo);
 
   const handleSubmit = (e)=> {
     e.preventDefault();
-    const data = {
-      firstName,
-      lastName,
-      cin,
-      informations,
-      photo
+    const db = getDatabase();
+    const userId = new Date().getTime().toString();
+    try {
+      set(dbref(db, "employees/"+userId), {
+        _id: userId,
+        photo: photo,
+        firstName: firstName,
+        lastName: lastName,
+        cin: cin,
+        informations: informations
+      })
+      toast.success("New Employee added !")
+      setTimeout(()=>{
+        window.location.assign("/employees");
+      }, 700);
     }
-    SuspectDataService.create(data).then(()=> {
-      toast.success("New Employee created !")
-    })
-    .catch(err=>{
-      toast.error(err);
-    })
+    catch(e) {
+      toast.error(e);
+    }
   }
   
   return (

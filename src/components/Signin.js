@@ -14,9 +14,11 @@ const Signin = ({history}) => {
         const authentification = getAuth();
         try {
             const user = await signInWithEmailAndPassword(authentification, email, password);
-            console.log(user);
+            if(user.user.email === "admin@ssdrfc.com") {
+                localStorage.setItem("admin", true);
+            }
             localStorage.setItem("token", user._tokenResponse.refreshToken);
-            history.push("/home");
+            history.push("/notifications");
         }
         catch(error) {
             if(error.code === "auth/wrong-password") {
