@@ -79,7 +79,7 @@ export default function Users() {
               </tr>
             </thead>
             <tbody>
-              {view}
+              { view }
             </tbody>
           </table>
         </div>

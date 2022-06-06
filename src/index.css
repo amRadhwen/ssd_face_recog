@@ -88,3 +88,25 @@ div.suspects img {
   padding: 5px;
   box-shadow: 0 0 5px white;
 }
+
+div.notifications div.image-card {
+  background-color: white;
+  height: 80px;
+}
+
+div.notifications div.image-card span {
+  text-transform: capitalize;
+  font-weight: bolder;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 50%;
+  line-height: 80px;;
+}
+
+div.notifications div.image-card img{
+  background-color: white;
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+}
